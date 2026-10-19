@@ -1,6 +1,6 @@
 {
   "id": "/",
-  "name": "雲島快遞隊",
+  "name": "雲島",
   "short_name": "雲島",
   "start_url": "/",
   "scope": "/",
@@ -8,5 +8,12 @@
   "orientation": "landscape",
   "background_color": "#122a43",
   "theme_color": "#122a43",
-  "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }
