@@ -57,6 +57,10 @@ html,body{font-family:"Segoe UI",Arial,sans-serif}.shell{isolation:isolate;backg
 
 
 .menuCard.selecting .brand h1{width:min(48vw,790px);height:clamp(180px,28vh,292px);margin:0;filter:drop-shadow(0 0 26px #ffd776dd) drop-shadow(0 0 54px #f3ba5588)}.menuCard.selecting .brand h1 img{object-fit:contain;object-position:left center;filter:brightness(1.08) saturate(1.12) drop-shadow(0 4px 14px #fff0c477)}#portalBtn.interactPrompt{width:92px;height:118px;left:50%;bottom:10%;padding:0;display:grid;place-items:center;transform:translateX(-50%);border:0;border-radius:0;clip-path:none;background:transparent;box-shadow:none;filter:drop-shadow(0 0 14px #6ae6e0bb) drop-shadow(0 0 31px #b98bff88);animation:portalArtworkPulse 2s ease-in-out infinite}#portalBtn.interactPrompt img{width:100%;height:100%;object-fit:contain;filter:brightness(1.08) saturate(1.15)}.controls.dungeonMode .ctrl.jump{display:none!important}@keyframes portalArtworkPulse{50%{transform:translateX(-50%) scale(1.08);filter:drop-shadow(0 0 24px #8af7e7) drop-shadow(0 0 48px #bd95ff)}}@media(max-width:700px){.menuCard.selecting .brand h1{width:min(54vw,590px);height:clamp(150px,25vh,220px)}#portalBtn.interactPrompt{width:74px;height:96px;bottom:8%}}
+
+/* Keep the large selected hero clear of the backlit title on every screen. */
+.menuCard.selecting .crest{left:5vw;top:67%;width:min(40vw,510px);height:min(72vh,650px)}
+@media(max-width:700px){.menuCard.selecting .crest{left:1vw;top:64%;width:43vw;height:52vh}}
 </style>
 </head><body>
 <div class="shell"><canvas class="game" id="game" width="960" height="540" aria-label="Cloud Isles game screen"></canvas>
