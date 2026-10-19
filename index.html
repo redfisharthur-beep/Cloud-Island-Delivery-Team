@@ -16,7 +16,7 @@
 </div>
 <script>
 (()=>{
-const c=document.getElementById('game'),ctx=c.getContext('2d'),H=540;let W=960,dpr=Math.min(window.devicePixelRatio||1,2);ctx.imageSmoothingEnabled=true;const worldArt=new Image();worldArt.src='assets/world-bg.webp';const courierArt=new Image();courierArt.src='assets/courier.webp';const actionArt=new Image();actionArt.src='assets/courier-actions.webp';const astralArt=new Image();astralArt.src='assets/courier-astral.webp';const biterArt=new Image();biterArt.src='assets/sky-biter.webp';
+const c=document.getElementById('game'),ctx=c.getContext('2d'),H=540;let W=960,dpr=Math.min(window.devicePixelRatio||1,2);ctx.imageSmoothingEnabled=true;const worldArts=['assets/world-bg.webp','assets/world-storm.webp','assets/world-astral.webp'].map(src=>{const img=new Image();img.src=src;return img});const courierArt=new Image();courierArt.src='assets/courier.webp';const actionArt=new Image();actionArt.src='assets/courier-actions.webp';const astralArt=new Image();astralArt.src='assets/courier-astral.webp';const biterArt=new Image();biterArt.src='assets/sky-biter.webp';
 function resizeGame(){const r=c.getBoundingClientRect();if(!r.width||!r.height)return;dpr=Math.min(window.devicePixelRatio||1,2);W=H*r.width/r.height;c.width=Math.round(W*dpr);c.height=Math.round(H*dpr);ctx.setTransform(c.width/W,0,0,c.height/H,0,0)}
 window.addEventListener('resize',resizeGame);window.addEventListener('fullscreenchange',resizeGame);window.addEventListener('orientationchange',()=>setTimeout(resizeGame,100));resizeGame();
 const foxIcon='<img src="assets/courier.webp" alt="" style="width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 6px 9px #16263866)">';
@@ -39,7 +39,7 @@ loadStage(1);
 const clouds=Array.from({length:15},(_,i)=>({x:i*250+Math.random()*120,y:45+Math.random()*210,s:.45+Math.random()*.85}));
 function rounded(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke()}}
 function drawSky(t){
-  const img=worldArt;if(img.complete&&img.naturalWidth){const aspect=W/H,ia=img.naturalWidth/img.naturalHeight;let sx=0,sy=0,sw=img.naturalWidth,sh=img.naturalHeight;if(ia>aspect){sw=sh*aspect;sx=(img.naturalWidth-sw)*Math.min(.82,Math.max(.08,cam/world*.72));}else{sh=sw/aspect;sy=(img.naturalHeight-sh)*.12;}ctx.drawImage(img,sx,sy,sw,sh,0,0,W,H)}else{ctx.fillStyle='#15243a';ctx.fillRect(0,0,W,H)}
+  const img=worldArts[stage-1]||worldArts[0];if(img.complete&&img.naturalWidth){const aspect=W/H,ia=img.naturalWidth/img.naturalHeight;let sx=0,sy=0,sw=img.naturalWidth,sh=img.naturalHeight;if(ia>aspect){sw=sh*aspect;sx=(img.naturalWidth-sw)*Math.min(.82,Math.max(.08,cam/world*.72));}else{sh=sw/aspect;sy=(img.naturalHeight-sh)*.12;}ctx.drawImage(img,sx,sy,sw,sh,0,0,W,H)}else{ctx.fillStyle='#15243a';ctx.fillRect(0,0,W,H)}
   const veil=ctx.createLinearGradient(0,0,0,H);veil.addColorStop(0,'#101a2b44');veil.addColorStop(.56,'#15243a22');veil.addColorStop(1,'#18263899');ctx.fillStyle=veil;ctx.fillRect(0,0,W,H);if(stage===2){ctx.fillStyle='#254358';ctx.globalAlpha=.12;ctx.fillRect(0,0,W,H);ctx.globalAlpha=1}else if(stage===3){ctx.fillStyle='#311f49';ctx.globalAlpha=.18;ctx.fillRect(0,0,W,H);ctx.globalAlpha=1}
   for(let i=0;i<18;i++){const x=((i*137+Math.sin(t*.7+i)*22-cam*.035)%(W+20)+W+20)%(W+20)-10,y=(i*79+t*(5+i%4))%(H*.72);ctx.globalAlpha=.15+(.2*Math.sin(t*2+i));ctx.fillStyle=i%3?'#d7e8e6':'#ffd79c';ctx.beginPath();ctx.arc(x,y,i%4===0?1.8:1,0,6.28);ctx.fill()}ctx.globalAlpha=1;
 }
