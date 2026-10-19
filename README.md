@@ -8,4 +8,4 @@
 4. Set the build command to `exit 0` and the build output directory to `.`.
 5. Deploy. The site serves the root `index.html`.
 
-The prototype is a self-contained HTML5 canvas game with no package installation or build step. It is designed for landscape mobile play. Tapping the play icon requests fullscreen and landscape orientation where supported. For an app-like fullscreen launch, install it to the home screen; the web app manifest requests fullscreen landscape mode. Touch icons are shown on screen; keyboard controls are also supported on desktop.
+The game is an HTML5 canvas project with two optimized WebP art assets and no package installation or build step. It is designed for landscape mobile play. Tapping the play icon requests fullscreen and landscape orientation where supported. For an app-like fullscreen launch, install it to the home screen; the web app manifest requests fullscreen landscape mode. Touch controls use icons only; keyboard controls are also supported on desktop. Moving platforms and visible wind currents add timing-based routes.
